@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from game.forms import LettersForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
 lettres=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -21,6 +22,7 @@ def auteur(request):
 def auteur2(request):
   return render(request, 'game/auteur2.html',locals())
 
+@login_required(login_url='/connexion/connexion/')
 def home(request):
     from Algo.core import run
     import sys
@@ -50,6 +52,7 @@ def home(request):
 
     return render(request, 'game/home.html',locals())
     
+@login_required(login_url='/connexion/connexion/')
 def random(request):
     import random
     data = {'arg1': lettres[random.randrange(0,26)],

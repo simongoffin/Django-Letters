@@ -4,11 +4,17 @@
     {{ form.as_p }}
 <input type="submit" value="run" />
 </form>
+
 <form action="{% url "game.views.home" %}" method="get">
     {% csrf_token %}
 <input type="submit" value="clear" />
 </form>
+
 <form action="{% url "game.views.random" %}" method="get">
     {% csrf_token %}
 <input type="submit" value="random" />
 </form>
+
+<p>
+    <a href={%  url "connexion.views.deconnexion" %}> deconnexion </a>
+</p>

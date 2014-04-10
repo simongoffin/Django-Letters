@@ -11,6 +11,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from game.forms import LettersForm
 
 def creation(request):
     sauvegarde = False
@@ -28,6 +29,8 @@ def creation(request):
                 userT = authenticate(username=nom, password=password)
                 if userT:  # Si l'objet renvoyé n'est pas None
                     login(request, userT)  # nous connectons l'utilisateur
+                    form = LettersForm()  # Nous créons un formulaire vide
+                    return render(request, 'game/home.html',locals())
                 else: #sinon une erreur sera affichée
                     error = True
             except:
@@ -46,6 +49,8 @@ def connexion(request):
             user = authenticate(username=username, password=password)  #Nous vérifions si les données sont correctes
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
+                form = LettersForm()  # Nous créons un formulaire vide
+                return render(request, 'game/home.html',locals())
             else: #sinon une erreur sera affichée
                 error = True
     else:
