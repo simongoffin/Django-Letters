@@ -41,8 +41,6 @@ def home(request):
             arg9 = form.cleaned_data['arg9']
             tuple=(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9)
             resultat=run(tuple)
-            print sys.getdefaultencoding()
-            print resultat
             res=resultat[0]
             res=res.decode('utf8')
             return render(request, 'game/ready.html',locals())
