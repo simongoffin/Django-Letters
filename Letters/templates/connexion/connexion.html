@@ -8,7 +8,6 @@
 Vous êtes connecté, {{ user.username }} !
 <p>
     <a href={%  url "connexion.views.deconnexion" %}> deconnexion </a>
-    <a href={%  url "connexion.views.confirmation" %}> confirmation </a>
     <a href={%  url "game.views.home" %}> jeu </a>
     
 </p>
@@ -18,9 +17,9 @@ Vous êtes connecté, {{ user.username }} !
  	   {{ form.as_p }}
     <input type="submit"/>
 </form>
-{% endif %}
-
 <p>
     <a href={%  url "connexion.views.creation" %}> créer un compte </a>
 </p>
+{% endif %}
+
 
