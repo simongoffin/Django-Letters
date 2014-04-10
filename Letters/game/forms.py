@@ -12,4 +12,3 @@ class LettersForm(forms.Form):
     arg7 = forms.CharField(label="*", max_length=1)
     arg8 = forms.CharField(label="*", max_length=1)
     arg9 = forms.CharField(label="*", max_length=1)
-    arg10 = forms.CharField(label="*", max_length=1)

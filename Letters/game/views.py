@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
@@ -22,7 +22,8 @@ def auteur2(request):
   return render(request, 'game/auteur2.html',locals())
 
 def home(request):
-    from core import run
+    from Algo.core import run
+    import sys
     if request.method == 'POST':  # S'il s'agit d'une requête POST
         form = LettersForm(request.POST)  # Nous reprenons les données
 
@@ -38,9 +39,12 @@ def home(request):
             arg7 = form.cleaned_data['arg7']
             arg8 = form.cleaned_data['arg8']
             arg9 = form.cleaned_data['arg9']
-            arg10 = form.cleaned_data['arg10']
-            tuple=(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10)
+            tuple=(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9)
             resultat=run(tuple)
+            print sys.getdefaultencoding()
+            print resultat
+            res=resultat[0]
+            res=res.decode('utf8')
             return render(request, 'game/ready.html',locals())
 
     else: # Si ce n'est pas du POST, c'est probablement une requête GET
@@ -58,8 +62,7 @@ def random(request):
             'arg6': lettres[random.randrange(0,26)],
             'arg7': lettres[random.randrange(0,26)],
             'arg8': voyelles[random.randrange(0,6)],
-            'arg9': lettres[random.randrange(0,26)],
-            'arg10': lettres[random.randrange(0,26)]}
+            'arg9': lettres[random.randrange(0,26)]}
     form = LettersForm(data)
     return render(request, 'game/random.html',locals())
     
