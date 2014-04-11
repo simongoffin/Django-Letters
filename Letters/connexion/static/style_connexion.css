@@ -245,83 +245,11 @@ article, aside
     margin:5px
 }
 
-#id_arg1 {
-    width: 50px;
-    height: 40px;
-    /*font-family: 'BallparkWeiner', serif;*/
-    border-radius: 5px;
-    font-size: 1.5em;
-    font-weight: normal;
-    border: 1px solid #760001;
-}
-
-#id_arg2 {
-    width: 50px;
-    height: 40px;
-    /*font-family: 'BallparkWeiner', serif;*/
-    border-radius: 5px;
-    font-size: 1.5em;
-    font-weight: normal;
-    border: 1px solid #760001;
-}
-
-#id_arg3 {
-    width: 50px;
-    height: 40px;
-    /*font-family: 'BallparkWeiner', serif;*/
-    border-radius: 5px;
-    font-size: 1.5em;
-    font-weight: normal;
-    border: 1px solid #760001;
-}
-
-#id_arg4 {
-    width: 50px;
-    height: 40px;
-    /*font-family: 'BallparkWeiner', serif;*/
-    border-radius: 5px;
-    font-size: 1.5em;
-    font-weight: normal;
-    border: 1px solid #760001;
-}
-
-#id_arg5 {
-    width: 50px;
-    height: 40px;
-    /*font-family: 'BallparkWeiner', serif;*/
-    border-radius: 5px;
-    font-size: 1.5em;
-    font-weight: normal;
-    border: 1px solid #760001;
-}
-
-#id_arg6 {
-    width: 50px;
-    height: 40px;
-    /*font-family: 'BallparkWeiner', serif;*/
-    border-radius: 5px;
-    font-size: 1.5em;
-    font-weight: normal;
-    border: 1px solid #760001;
-}
-
-#id_arg7 {
-    width: 80px;
-    height: 40px;
-    /*font-family: 'BallparkWeiner', serif;*/
-    border-radius: 5px;
-    font-size: 1.5em;
-    font-weight: normal;
-    border: 4px solid #A80000 ;
-}
-
 #cache{
     visibility:hidden;
 }
 
 #solution{
-    margin-left: auto;
-    margin-right: auto;
     font-family: 'BallparkWeiner', serif;
     font-size: 1.2em;
 }
@@ -354,11 +282,14 @@ h2 a
 
 #definition
 {
-    background-color:white;
-    /*background-image:url(logo/business.jpg);*/
-    background-position:left bottom;
-    background-repeat:no-repeat;
-    z-index: 1;
+    margin-top: 15px;
+    height: 200px;
+    border-radius: 5px;
+    background: url('logo/damier.png');
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+    margin-bottom: 25px;
+    border: 2px solid black;
 }
 
 
