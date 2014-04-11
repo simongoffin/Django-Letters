@@ -25,10 +25,11 @@ def auteur2(request):
 @login_required(login_url='/connexion/connexion/')
 def home(request):
     from Algo.core import run
+    from Algo.parser import requete_mot
     import sys
+    solution=False
     if request.method == 'POST':  # S'il s'agit d'une requête POST
         form = LettersForm(request.POST)  # Nous reprenons les données
-
         if form.is_valid(): # Nous vérifions que les données envoyées sont valides
 
             # Ici nous pouvons traiter les données du formulaire
@@ -41,11 +42,16 @@ def home(request):
             arg7 = form.cleaned_data['arg7']
             arg8 = form.cleaned_data['arg8']
             arg9 = form.cleaned_data['arg9']
+            if arg1==arg2==arg3==arg4==arg5==arg6==arg7==arg8==arg9:
+                return render(request, 'game/home.html',locals())
             tuple=(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9)
             resultat=run(tuple)
-            res=resultat[0]
-            res=res.decode('utf8')
-            return render(request, 'game/ready.html',locals())
+            if len(resultat)>0:
+                solution=True
+                res=resultat[0]
+                definition= requete_mot(res)
+                res=res.decode('utf8')
+            return render(request, 'game/home.html',locals())
 
     else: # Si ce n'est pas du POST, c'est probablement une requête GET
         form = LettersForm()  # Nous créons un formulaire vide
@@ -55,6 +61,7 @@ def home(request):
 @login_required(login_url='/connexion/connexion/')
 def random(request):
     import random
+    solution=False
     data = {'arg1': lettres[random.randrange(0,26)],
             'arg2': voyelles[random.randrange(0,6)],
             'arg3': lettres[random.randrange(0,26)],
@@ -65,6 +72,6 @@ def random(request):
             'arg8': voyelles[random.randrange(0,6)],
             'arg9': lettres[random.randrange(0,26)]}
     form = LettersForm(data)
-    return render(request, 'game/random.html',locals())
+    return render(request, 'game/home.html',locals())
     
 
