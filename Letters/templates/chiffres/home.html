@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="{{ STATIC_URL }}style.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}style_chiffres.css" />
         <title>Pole-position</title>
         <script src="{{ STATIC_URL }}scrollfix.js" type="text/javascript"></script>
     </head>
@@ -39,14 +39,14 @@
                     <div class="one">
                         <div id="game" class="two">
                             <div class="three">
-                                <h2>Lettres</h2>
+                                <h2>Chiffres</h2>
                             </div>
                             <div class="three">
                                 <div class="five">
-                                    <form action="{% url "game.views.home" %}" method="post">
+                                    <form action="{% url "chiffres.views.home" %}" method="post">
                                     {% csrf_token %}
                                     {% for f in form %}
-                                        {{ f }}
+                                        {{f}}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -55,17 +55,21 @@
                                     <input id="boutons" style="cursor:pointer;" type="submit" value="run" />
                                     </form>
                                 </div>
-                                <form class="four" action="{% url "game.views.random" %}" method="get">
+                                <form class="four" action="{% url "chiffres.views.random" %}" method="get">
                                     <input id="boutons" style="cursor:pointer;" type="submit" value="random"/>
                                 </form>
-                                <form class="four" action="{% url "game.views.home" %}" method="get">
+                                <form class="four" action="{% url "chiffres.views.home" %}" method="get">
                                     <input id="boutons" style="cursor:pointer;" type="submit" value="clear"/>
                                 </form>
                             </div>
                         </div>
                         <div id="definition" class="two">
                             {%if solution%}
-                                <div id="solution"><h2>{{res}}</h2> {{definition}} </div>
+                                <div id="solution">
+                                    {% for r in op %}
+                                        <h3>{{r}}</h3>
+                                    {% endfor %}
+                                </div>
                             {%else%}
                                 <h2>Solution</h2>
                             {%endif%}
