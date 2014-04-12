@@ -168,7 +168,7 @@ nav a:hover
     position: absolute;
     right: 5px;
     bottom: 5px;
-    background: url('images/fond_degraderouge.png') repeat-x;
+    background: url('logo/fond_degraderouge.png') repeat-x;
     border: 1px solid #760001;
     border-radius: 5px;
     font-size: 1.2em;
@@ -468,7 +468,7 @@ footer h1
     vertical-align: top;
     margin-top: 0;
     width: 48%;
-    list-style-image: url('images/ico_liensexterne.png');
+    list-style-image: url('logo/ico_liensexterne.png');
     padding-left: 2px;
 }
 
