@@ -14,6 +14,8 @@ from django.contrib.auth.models import User
 from game.forms import LettersForm
 
 def creation(request):
+    from Algo.password_generator import generator
+    from Algo.send_password import send_password
     sauvegarde = False
     error=False
     if request.method == "POST":
@@ -21,20 +23,31 @@ def creation(request):
         if form.is_valid():
             nom = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            user = User.objects.create_user(nom, email,password)
-            try:
-                user.save()
-                sauvegarde = True
-                userT = authenticate(username=nom, password=password)
-                if userT:  # Si l'objet renvoyé n'est pas None
-                    login(request, userT)  # nous connectons l'utilisateur
-                    form = LettersForm()  # Nous créons un formulaire vide
-                    return render(request, 'game/home.html',locals())
-                else: #sinon une erreur sera affichée
-                    error = True
-            except:
+            password=generator()
+            nb_ad=User.objects.filter(email=email).count()
+            if send_password(email,password) and nb_ad==0:
+                try:
+                    user = User.objects.create_user(nom, email,password)
+                    user.save()
+                except:
+                    error=True
+                    erreur="Veuillez entrer un autre nom."
+                    form = ProfilForm()
+                    return render(request, 'connexion/creation.html',locals())
+                return render(request, 'connexion/send_email.html',locals())
+            else:
                 error=True
+                if nb_ad==0:
+                    erreur="Adresse incorrecte."
+                else:
+                    erreur="Adresse deja utilisée."
+                form = ProfilForm()
+                return render(request, 'connexion/creation.html',locals())
+        else:
+            error=True
+            erreur="Formulaire invalide."
+            form = ProfilForm()
+            return render(request, 'connexion/creation.html',locals())
     else:
         form = ProfilForm()
     return render(request, 'connexion/creation.html',locals())

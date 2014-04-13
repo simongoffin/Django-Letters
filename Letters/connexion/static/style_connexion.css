@@ -168,7 +168,7 @@ nav a:hover
     position: absolute;
     right: 5px;
     bottom: 5px;
-    background: url('images/fond_degraderouge.png') repeat-x;
+    background: url('logo/fond_degraderouge.png') repeat-x;
     border: 1px solid #760001;
     border-radius: 5px;
     font-size: 1.2em;
@@ -265,6 +265,13 @@ h2 a
     background-color:black;
     color:white;
     background-image:url(logo/chrono.jpg);
+    background-position:left bottom;
+    background-repeat:no-repeat;
+    z-index: 1;
+}
+
+#send_email
+{
     background-position:left bottom;
     background-repeat:no-repeat;
     z-index: 1;

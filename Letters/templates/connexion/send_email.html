@@ -37,17 +37,8 @@
             <section>
                 <article>
                     <div class="one">
-                        <div id="game" class="two">
-                            {%if error%}
-                                <h2>{{erreur}}</h2>
-                            {%else%}
-                                <h2>Creer un compte</h2>
-                            {%endif%}
-                            <form method="post" action=".">
- 	                            {% csrf_token %}
- 	                            {{ form.as_p }}
-                                <input id="boutons" style="cursor:pointer;" type="submit" value="valider" />
-                            </form>
+                        <div id="send_email" class="two">
+                            <h2>Le password vous a été envoyé par email.</h2>
                         </div>
                         <div id="definition" class="two">
                             
