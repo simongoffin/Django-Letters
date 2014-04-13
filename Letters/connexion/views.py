@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from game.forms import LettersForm
+from connexion.models import Connexion
 
 def creation(request):
     from Algo.password_generator import generator
@@ -63,6 +64,7 @@ def connexion(request):
             if user:  # Si l'objet renvoyé n'est pas None
                 login(request, user)  # nous connectons l'utilisateur
                 form = LettersForm()  # Nous créons un formulaire vide
+                connex= Connexion(user_name=username,nb_run_lettres=0,nb_run_chiffres=0).save()
                 return render(request, 'game/home.html',locals())
             else: #sinon une erreur sera affichée
                 error = True

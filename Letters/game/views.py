@@ -6,6 +6,7 @@ from game.forms import LettersForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from connexion.models import Connexion
 
 
 lettres=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
@@ -31,7 +32,9 @@ def home(request):
     if request.method == 'POST':  # S'il s'agit d'une requête POST
         form = LettersForm(request.POST)  # Nous reprenons les données
         if form.is_valid(): # Nous vérifions que les données envoyées sont valides
-
+            conn=Connexion.objects.filter(user_name=request.user.username).latest('date')
+            conn.nb_run_lettres+=1
+            conn.save()
             # Ici nous pouvons traiter les données du formulaire
             arg1 = form.cleaned_data['arg1']
             arg2 = form.cleaned_data['arg2']

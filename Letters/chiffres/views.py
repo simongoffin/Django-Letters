@@ -6,6 +6,7 @@ from chiffres.forms import ChiffresForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from connexion.models import Connexion
 
 
 
@@ -18,7 +19,9 @@ def home(request):
     if request.method == 'POST':  # S'il s'agit d'une requête POST
         form = ChiffresForm(request.POST)  # Nous reprenons les données
         if form.is_valid(): # Nous vérifions que les données envoyées sont valides
-
+            conn=Connexion.objects.filter(user_name=request.user.username).latest('date')
+            conn.nb_run_chiffres+=1
+            conn.save()
             # Ici nous pouvons traiter les données du formulaire
             arg1 = form.cleaned_data['arg1']
             arg2 = form.cleaned_data['arg2']
