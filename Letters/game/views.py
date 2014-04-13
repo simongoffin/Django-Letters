@@ -49,7 +49,10 @@ def home(request):
             if len(resultat)>0:
                 solution=True
                 res=resultat[0]
-                definition= requete_mot(res)
+                try:
+                    definition= requete_mot(res)
+                except:
+                    definition="Définition introuvable."
                 res=res.decode('utf8')
             return render(request, 'game/home.html',locals())
 
