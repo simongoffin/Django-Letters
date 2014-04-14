@@ -17,6 +17,7 @@ from connexion.models import Connexion
 def creation(request):
     from Algo.password_generator import generator
     from Algo.send_password import send_password
+    from Algo.no_space import no_space
     sauvegarde = False
     error=False
     if request.method == "POST":
@@ -25,6 +26,7 @@ def creation(request):
             nom = form.cleaned_data['username']
             email = form.cleaned_data['email']
             password=generator()
+            email=no_space(email)
             nb_ad=User.objects.filter(email=email).count()
             if send_password(email,password) and nb_ad==0:
                 try:
