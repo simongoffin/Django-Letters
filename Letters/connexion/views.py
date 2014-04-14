@@ -70,6 +70,8 @@ def connexion(request):
                 return render(request, 'game/home.html',locals())
             else: #sinon une erreur sera affichée
                 error = True
+        else:
+            form = ConnexionForm()
     else:
         form = ConnexionForm()
 
