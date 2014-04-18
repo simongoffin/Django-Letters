@@ -41,7 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'game',
     'connexion',
-    'chiffres'
+    'chiffres',
+    'challenge',
+    'score'
 )
 
 MIDDLEWARE_CLASSES = (

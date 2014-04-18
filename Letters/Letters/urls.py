@@ -14,4 +14,6 @@ urlpatterns = patterns('',
     url(r'^game/', include('game.urls')),
     url(r'^chiffres/', include('chiffres.urls')),
     url(r'^connexion/', include('connexion.urls')),
+    url(r'^challenge/', include('challenge.urls')),
+    url(r'^score/', include('score.urls')),
 )
