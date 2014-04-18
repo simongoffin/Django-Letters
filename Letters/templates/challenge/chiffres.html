@@ -64,20 +64,13 @@
                             </div>
                         </div>
                         <div id="definition" class="two">
-                            <h2>Reponse</h2>
-                            <div class="three">
                                 <form action="{% url "challenge.views.valide_chiffres" %}" method="post">
                                 {% csrf_token %}
                                 {% for f in form %}
-                                    {{f}}
+                                    <p>{{f.label}}{{f}}</p>
                                 {% endfor %}
-                            </div>
-                            <div class="three">
-                                <div class="four">
-                                    <input id="boutons" style="cursor:pointer;" type="submit" value="valide"/>
+                                <input id="boutons" style="cursor:pointer;" type="submit" value="valide"/>
                                 </form>
-                                </div>
-                            </div>
                             
                         </div>
                     </div>

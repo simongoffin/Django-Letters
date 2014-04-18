@@ -112,13 +112,21 @@ def valide_lettres(request):
                 s['point']+=temp[1]
                 s.save()
             if s['tour']==nb_coups:
+                print 'Score save(on lettres valide)'
                 finish=True
                 score= Score(user_name=request.user.username,score=s['point'],temps=s['duree']).save()
             return render(request, 'challenge/next.html',locals())
         else:
-            if s['tour']>=nb_coups:
+            if s['tour']==nb_coups:
+                print 'Score save(on lettres non valide)'
                 finish=True
-            return render(request, 'challenge/next.html',locals())
+                score= Score(user_name=request.user.username,score=s['point'],temps=s['duree']).save()
+                return render(request, 'challenge/next_chiffres.html',locals())
+            elif s['tour']>nb_coups:
+                finish=True
+                return render(request, 'challenge/next_chiffres.html',locals())
+            else:
+                return render(request, 'challenge/next_chiffres.html',locals())
     else:
         if s['tour']>=nb_coups:
             finish=True
@@ -148,7 +156,8 @@ def valide_chiffres(request):
         if form.is_valid(): # Nous vérifions que les données envoyées sont valides
             v=[]
             op1 = form.cleaned_data["op1"]
-            v.append(op1)
+            if not op1=='':
+                v.append(op1)
             op2 = form.cleaned_data["op2"]
             if not op2=='':
                 v.append(op2)
@@ -169,13 +178,21 @@ def valide_chiffres(request):
                 s['point']+=temp[1]
                 s.save()
             if s['tour']==nb_coups:
+                print 'Score save(on chiffres valide)'
                 finish=True
                 score= Score(user_name=request.user.username,score=s['point'],temps=s['duree']).save()
             return render(request, 'challenge/next_chiffres.html',locals())
         else:
-            if s['tour']>=nb_coups:
+            if s['tour']==nb_coups:
+                print 'Score save(on chiffres non valide)'
                 finish=True
-            return render(request, 'challenge/next_chiffres.html',locals())
+                score= Score(user_name=request.user.username,score=s['point'],temps=s['duree']).save()
+                return render(request, 'challenge/next_chiffres.html',locals())
+            elif s['tour']>nb_coups:
+                finish=True
+                return render(request, 'challenge/next_chiffres.html',locals())
+            else:
+                return render(request, 'challenge/next_chiffres.html',locals())
     else:
         if s['tour']>=nb_coups:
             finish=True
