@@ -172,8 +172,9 @@ def valide_chiffres(request):
                 v.append(op5)
             liste=[s['ch1'],s['ch2'],s['ch3'],s['ch4'],s['ch5'],s['ch6']]
             temp=chiffres_check(v,liste,s['compte'])
-            solution=temp[0]
             point=temp[1]
+            if point>0:
+                solution=True
             if temp[0]:
                 s['point']+=temp[1]
                 s.save()

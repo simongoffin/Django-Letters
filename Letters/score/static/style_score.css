@@ -281,8 +281,7 @@ article, aside
 }
 
 #score{
-    font-family: 'BallparkWeiner', serif;
-    font-size: 1.5em;
+    font-size: 1.0em;
 }
 
 #valide{
@@ -318,11 +317,14 @@ h2 a
 
 #definition
 {
-    background-color:white;
-    /*background-image:url(logo/business.jpg);*/
-    background-position:left bottom;
-    background-repeat:no-repeat;
-    z-index: 1;
+    margin-top: 15px;
+    height: 200px;
+    border-radius: 5px;
+    background: url('logo/damier.png');
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+    margin-bottom: 25px;
+    border: 2px solid black;
 }
 
 
