@@ -2,7 +2,7 @@
 from django import forms
 
 class LettersForm(forms.Form):
-    solution = forms.CharField(label="Solution", max_length=9,required=False)
+    solution = forms.CharField(label="Solution", max_length=11,required=False)
 
 class ChiffresForm(forms.Form):
     op1 = forms.CharField(label="1.", max_length=11,required=False)

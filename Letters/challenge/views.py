@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# -*-coding:utf-8 -*
+#!/usr/bin/python
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
