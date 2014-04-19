@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'connexion',
     'chiffres',
     'challenge',
-    'score'
+    'score',
+    'vous'
 )
 
 MIDDLEWARE_CLASSES = (
